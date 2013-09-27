@@ -10,6 +10,25 @@ define('JQUERY_PATH', PARANEUE_VENDOR_PATH . '/jquery');
 
 require_once PARANEUE_PATH . '/includes/bootstrap.inc';
 require_once PARANEUE_PATH . '/includes/theme.inc';
+require_once PARANEUE_PATH . '/includes/preprocess.inc';
+
+function paraneue_html_head_alter(&$head_elements) {
+  foreach($head_elements as $key => $element) {
+    switch($key) {
+      case (preg_match('/^drupal_add_html_head_link*/', $key)) ? TRUE : FALSE:
+        $shortcut_key = $key;
+        break;
+    }
+  }
+
+  if ($shortcut_key) {
+    $shortcut = $head_elements[$shortcut_key];
+    unset($head_elements[$shortcut_key]);
+    $shortcut_url = url(NEUE_PATH . '/assets/favicon.ico', array('absolute' => TRUE));
+    $shortcut['#attributes']['href'] = $shortcut_url;
+    $head_elements['drupal_add_html_head_link:' . $shortcut_url] = $shortcut;
+  }
+}
 
 /**
  * Implements hook_css_alter().

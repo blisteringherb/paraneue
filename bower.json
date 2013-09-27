@@ -1,0 +1,9 @@
+{
+  "name": "paraneue",
+  "private": "true",
+  "dependencies": {
+    "neue": "git@github.com:DoSomething/ds-neue.git",
+    "jquery": "latest",
+    "unveil": "latest"
+  }
+}

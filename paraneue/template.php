@@ -9,6 +9,7 @@ define('NEUE_PATH', PARANEUE_VENDOR_PATH . '/neue');
 define('JQUERY_PATH', PARANEUE_VENDOR_PATH . '/jquery');
 
 require_once PARANEUE_PATH . '/includes/bootstrap.inc';
+require_once PARANEUE_PATH . '/includes/theme.inc';
 
 /**
  * Implements hook_css_alter().

@@ -25,16 +25,20 @@
 <?php print $messages; ?>
 
 <div role="main" class="wrapper">
+  <div class="content-center">
 
-<a id="main-content"></a>
-<?php print render($title_prefix); ?>
-<?php if ($title): ?><h1 class="title" id="page-title"><?php print $title; ?></h1><?php endif; ?>
-<?php print render($title_suffix); ?>
+    <?php print $messages; ?>
+    
+    <?php print render($title_prefix); ?>
+    <?php if ($title): ?><h1 class="title" id="page-title"><?php print $title; ?></h1><?php endif; ?>
+    <?php print render($title_suffix); ?>
 
-<?php if ($tabs): ?><div class="tabs"><?php print render($tabs); ?></div><?php endif; ?>
-<?php print render($page['help']); ?>
+    <?php if ($breadcrumb): ?>
+      <div id="breadcrumb"><?php print $breadcrumb; ?></div>
+    <?php endif; ?>
 
-<?php print render($page['content']); ?>
+    <?php print render($page['content']); ?>
+  </div>
 </div>
 
 <div class="footer-wrapper">

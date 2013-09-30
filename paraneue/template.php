@@ -4,7 +4,7 @@
  */
 
 define('PARANEUE_PATH', drupal_get_path('theme', 'paraneue'));
-define('PARANEUE_VENDOR_PATH', dirname(PARANEUE_PATH) . '/vendor');
+define('PARANEUE_VENDOR_PATH', PARANEUE_PATH . '/vendor');
 define('NEUE_PATH', PARANEUE_VENDOR_PATH . '/neue');
 define('JQUERY_PATH', PARANEUE_VENDOR_PATH . '/jquery');
 

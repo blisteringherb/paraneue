@@ -34,7 +34,6 @@ function paraneue_html_head_alter(&$head_elements) {
  * Implements hook_css_alter().
  */
 function paraneue_css_alter(&$css) {
-
   // Load excluded CSS files from theme.
   $excludes = _paraneue_alter(paraneue_theme_get_info('exclude'), 'css');
 
@@ -46,7 +45,7 @@ function paraneue_css_alter(&$css) {
 
     // Core
     $css['neue'] = array(
-      'data' => NEUE_PATH . '/assets/application.css',
+      'data' => NEUE_PATH . '/assets/neue.css',
       'type' => 'file',
       'every_page' => TRUE,
       'media' => 'all',
@@ -97,7 +96,7 @@ function paraneue_js_alter(&$js) {
 
     $js['misc/drupal.js']['weight'] = -19;
 
-    $neue_core = NEUE_PATH . '/assets/application.js';
+    $neue_core = NEUE_PATH . '/assets/neue.js';
     $js[$neue_core] = drupal_js_defaults();
     $js[$neue_core]['data'] = $neue_core;
     $js[$neue_core]['type'] = 'file';

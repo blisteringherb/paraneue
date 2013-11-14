@@ -3,10 +3,17 @@
  * include template overwrites
  */
 
+
 define('PARANEUE_PATH', drupal_get_path('theme', 'paraneue'));
-define('PARANEUE_VENDOR_PATH', PARANEUE_PATH . '/vendor');
-define('NEUE_PATH', PARANEUE_VENDOR_PATH . '/neue');
-define('JQUERY_PATH', PARANEUE_VENDOR_PATH . '/jquery');
+
+switch(theme_get_setting('paraneue_neue_source')) {
+  case 'library':
+    define('NEUE_PATH', 'sites/all/libraries/neue');
+    break;
+  case 'bower':
+    define('NEUE_PATH', PARANEUE_PATH . '/vendor/neue');
+    break;
+}
 
 require_once PARANEUE_PATH . '/includes/bootstrap.inc';
 require_once PARANEUE_PATH . '/includes/theme.inc';
@@ -43,10 +50,10 @@ function paraneue_css_alter(&$css) {
     
   }
   else {
-
+  
     // Core
     $css['neue'] = array(
-      'data' => NEUE_PATH . '/assets/application.css',
+      'data' => NEUE_PATH . '/assets/neue.css',
       'type' => 'file',
       'every_page' => TRUE,
       'media' => 'all',
@@ -58,7 +65,7 @@ function paraneue_css_alter(&$css) {
 
     // IE
     $css['neue-ie'] = array(
-      'data' => NEUE_PATH . '/assets/ie.css',
+      'data' => NEUE_PATH . '/assets/neue.css',
       'type' => 'file',
       'every_page' => TRUE,
       'media' => 'all',
@@ -83,21 +90,21 @@ function paraneue_js_alter(&$js) {
 
   // Load from CDN
   if (theme_get_setting('paraneue_neue_cdn')) {
-    
+    krumo('js');
   }
   else {
 
-    $jquery = JQUERY_PATH . '/jquery.js';
-    $js[$jquery] = drupal_js_defaults();
-    $js[$jquery]['data'] = $jquery;
-    $js[$jquery]['group'] = -100;
-    $js[$jquery]['type'] = 'file';
-    $js[$jquery]['every_page'] = TRUE;
-    $js[$jquery]['weight'] = -20;
+    // $jquery = JQUERY_PATH . '/jquery.js';
+    // $js[$jquery] = drupal_js_defaults();
+    // $js[$jquery]['data'] = $jquery;
+    // $js[$jquery]['group'] = -100;
+    // $js[$jquery]['type'] = 'file';
+    // $js[$jquery]['every_page'] = TRUE;
+    // $js[$jquery]['weight'] = -20;
 
     $js['misc/drupal.js']['weight'] = -19;
 
-    $neue_core = NEUE_PATH . '/assets/application.js';
+    $neue_core = NEUE_PATH . '/assets/neue.js';
     $js[$neue_core] = drupal_js_defaults();
     $js[$neue_core]['data'] = $neue_core;
     $js[$neue_core]['type'] = 'file';

@@ -16,6 +16,18 @@ function paraneue_form_system_theme_settings_alter(&$form, $form_state) {
     '#default_value' => theme_get_setting('paraneue_neue_cdn')
   );
 
+  $form['neue']['paraneue_neue_source'] = array(
+    '#type'          => 'select',
+    '#title'         => t('Neue library source') ,
+    '#description'   => t('Choose where to source the Neue library'),
+    '#options'       => array(
+      'cdn' => t('CDN'),
+      'library' => t('Library API'),
+      'bower' => t('Bower')
+    ),
+    '#default_value' => theme_get_setting('paraneue_neue_source')
+  );
+
 
   $form['js'] = array(
       '#type'          => 'fieldset',

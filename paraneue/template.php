@@ -41,7 +41,6 @@ function paraneue_html_head_alter(&$head_elements) {
  * Implements hook_css_alter().
  */
 function paraneue_css_alter(&$css) {
-
   // Load excluded CSS files from theme.
   $excludes = _paraneue_alter(paraneue_theme_get_info('exclude'), 'css');
 

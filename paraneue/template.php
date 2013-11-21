@@ -8,7 +8,7 @@ define('PARANEUE_PATH', drupal_get_path('theme', 'paraneue'));
 
 switch(theme_get_setting('paraneue_neue_source')) {
   case 'library':
-    define('NEUE_PATH', 'sites/all/libraries/neue');
+    define('NEUE_PATH', 'profiles/dosomething/libraries/neue');
     break;
   case 'bower':
     define('NEUE_PATH', PARANEUE_PATH . '/vendor/neue');
@@ -43,37 +43,30 @@ function paraneue_html_head_alter(&$head_elements) {
 function paraneue_css_alter(&$css) {
   // Load excluded CSS files from theme.
   $excludes = _paraneue_alter(paraneue_theme_get_info('exclude'), 'css');
-
-  // Load from CDN
-  if (theme_get_setting('paraneue_neue_cdn')) {
     
-  }
-  else {
-  
-    // Core
-    $css['neue'] = array(
-      'data' => NEUE_PATH . '/assets/neue.css',
-      'type' => 'file',
-      'every_page' => TRUE,
-      'media' => 'all',
-      'preprocess' => TRUE,
-      'group' => CSS_THEME,
-      'browsers' => array('IE' => TRUE, '!IE' => TRUE),
-      'weight' => -1,
-    );
+  // Core
+  $css['neue'] = array(
+    'data' => NEUE_PATH . '/assets/neue.css',
+    'type' => 'file',
+    'every_page' => TRUE,
+    'media' => 'all',
+    'preprocess' => TRUE,
+    'group' => CSS_THEME,
+    'browsers' => array('IE' => TRUE, '!IE' => TRUE),
+    'weight' => -1,
+  );
 
-    // IE
-    $css['neue-ie'] = array(
-      'data' => NEUE_PATH . '/assets/neue.css',
-      'type' => 'file',
-      'every_page' => TRUE,
-      'media' => 'all',
-      'preprocess' => TRUE,
-      'group' => CSS_THEME,
-      'browsers' => array('IE' => 'lt IE 9'),
-      'weight' => 1,
-    );
-  }
+  // IE
+  $css['neue-ie'] = array(
+    'data' => NEUE_PATH . '/assets/neue.css',
+    'type' => 'file',
+    'every_page' => TRUE,
+    'media' => 'all',
+    'preprocess' => TRUE,
+    'group' => CSS_THEME,
+    'browsers' => array('IE' => 'lt IE 9'),
+    'weight' => 1,
+  );
 
   $css = array_diff_key($css, $excludes);
 }
@@ -87,46 +80,38 @@ function paraneue_js_alter(&$js) {
 
   $theme_path = drupal_get_path('theme', 'bootstrap');
 
-  // Load from CDN
-  if (theme_get_setting('paraneue_neue_cdn')) {
-    krumo('js');
-  }
-  else {
+  // $jquery = JQUERY_PATH . '/jquery.js';
+  // $js[$jquery] = drupal_js_defaults();
+  // $js[$jquery]['data'] = $jquery;
+  // $js[$jquery]['group'] = -100;
+  // $js[$jquery]['type'] = 'file';
+  // $js[$jquery]['every_page'] = TRUE;
+  // $js[$jquery]['weight'] = -20;
 
-    // $jquery = JQUERY_PATH . '/jquery.js';
-    // $js[$jquery] = drupal_js_defaults();
-    // $js[$jquery]['data'] = $jquery;
-    // $js[$jquery]['group'] = -100;
-    // $js[$jquery]['type'] = 'file';
-    // $js[$jquery]['every_page'] = TRUE;
-    // $js[$jquery]['weight'] = -20;
+  $js['misc/drupal.js']['weight'] = -19;
 
-    $js['misc/drupal.js']['weight'] = -19;
+  $neue_core = NEUE_PATH . '/assets/neue.js';
+  $js[$neue_core] = drupal_js_defaults();
+  $js[$neue_core]['data'] = $neue_core;
+  $js[$neue_core]['type'] = 'file';
+  $js[$neue_core]['every_page'] = TRUE;
+  $js[$neue_core]['weight'] = -20;
 
-    $neue_core = NEUE_PATH . '/assets/neue.js';
-    $js[$neue_core] = drupal_js_defaults();
-    $js[$neue_core]['data'] = $neue_core;
-    $js[$neue_core]['type'] = 'file';
-    $js[$neue_core]['every_page'] = TRUE;
-    $js[$neue_core]['weight'] = -20;
+  $neue_html5 = NEUE_PATH . '/assets/ie/html5.min.js';
+  $js[$neue_html5] = drupal_js_defaults();
+  $js[$neue_html5]['data'] = $neue_html5;
+  $js[$neue_html5]['type'] = 'file';
+  $js[$neue_html5]['every_page'] = TRUE;
+  $js[$neue_html5]['weight'] = 1;
+  $js[$neue_html5]['browsers'] = array('IE' => 'lt IE 9');
 
-    $neue_html5 = NEUE_PATH . '/assets/ie/html5.min.js';
-    $js[$neue_html5] = drupal_js_defaults();
-    $js[$neue_html5]['data'] = $neue_html5;
-    $js[$neue_html5]['type'] = 'file';
-    $js[$neue_html5]['every_page'] = TRUE;
-    $js[$neue_html5]['weight'] = 1;
-    $js[$neue_html5]['browsers'] = array('IE' => 'lt IE 9');
-
-    $neue_rem = NEUE_PATH . '/assets/ie/rem.min.js';
-    $js[$neue_rem] = drupal_js_defaults();
-    $js[$neue_rem]['data'] = $neue_rem;
-    $js[$neue_rem]['type'] = 'file';
-    $js[$neue_rem]['every_page'] = TRUE;
-    $js[$neue_rem]['weight'] = 2;
-    $js[$neue_rem]['browsers'] = array('IE' => 'lt IE 9');
-
-  }
+  $neue_rem = NEUE_PATH . '/assets/ie/rem.min.js';
+  $js[$neue_rem] = drupal_js_defaults();
+  $js[$neue_rem]['data'] = $neue_rem;
+  $js[$neue_rem]['type'] = 'file';
+  $js[$neue_rem]['every_page'] = TRUE;
+  $js[$neue_rem]['weight'] = 2;
+  $js[$neue_rem]['browsers'] = array('IE' => 'lt IE 9');
 
   $js = array_diff_key($js, $excludes);
 

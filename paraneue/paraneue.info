@@ -51,3 +51,4 @@ exclude[css][] = 'modules/update/update.css'
 exclude[css][] = 'modules/user/user.css'
 
 settings[paraneue_neue_source] = 'library'
+settings[paraneue_neue_library_path] = 'sites/all/libraries/neue'

@@ -8,7 +8,7 @@ define('PARANEUE_PATH', drupal_get_path('theme', 'paraneue'));
 
 switch(theme_get_setting('paraneue_neue_source')) {
   case 'library':
-    define('NEUE_PATH', 'profiles/dosomething/libraries/neue');
+    define('NEUE_PATH', theme_get_setting('paraneue_neue_library_path'));
     break;
   case 'bower':
     define('NEUE_PATH', PARANEUE_PATH . '/vendor/neue');

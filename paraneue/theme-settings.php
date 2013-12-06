@@ -28,6 +28,12 @@ function paraneue_form_system_theme_settings_alter(&$form, $form_state) {
     '#default_value' => theme_get_setting('paraneue_neue_source')
   );
 
+  $form['neue']['paraneue_neue_library_path'] = array(
+    '#type'          => 'textfield',
+    '#title'         => t('Neue library path'),
+    '#default_value' => theme_get_setting('paraneue_neue_library_path'),
+    '#description'   => t('If source is set to "Library API", specify the path of the neue library'),
+  );
 
   $form['js'] = array(
       '#type'          => 'fieldset',

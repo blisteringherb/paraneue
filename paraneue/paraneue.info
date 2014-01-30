@@ -1,5 +1,5 @@
-name = ParaNeue
-description = Para (for) Neue - A base theme based off of the ds neue library
+name = Paraneue
+description = Para (for) Neue - A base Drupal theme using the Neue pattern library
 screenshot = screenshot.png
 engine = phptemplate
 core = 7.x
@@ -14,8 +14,12 @@ features[] = secondary_menu
 
 ;Exclude
 ;javascript
+exclude[js][] = 'misc/drupal.js'
 exclude[js][] = 'misc/jquery.js'
+exclude[js][] = 'misc/jquery.cookie.js'
+exclude[js][] = 'misc/jquery.once.js'
 exclude[js][] = 'modules/contextual/contextual.js'
+exclude[js][] = 'settings'
 
 ;css
 exclude[css][] = 'misc/vertical-tabs.css'
@@ -23,8 +27,12 @@ exclude[css][] = 'modules/aggregator/aggregator.css'
 exclude[css][] = 'modules/block/block.css'
 exclude[css][] = 'modules/book/book.css'
 exclude[css][] = 'modules/comment/comment.css'
+exclude[css][] = 'modules/ctools/ctools.css'
+exclude[css][] = 'modules/contrib/date/date_api/date.css'
 exclude[css][] = 'modules/dblog/dblog.css'
 exclude[css][] = 'modules/field/theme/field.css'
+exclude[css][] = 'modules/field/theme/field.css'
+exclude[css][] = 'modules/field_group/field_group.field_ui.css'
 exclude[css][] = 'modules/file/file.css'
 exclude[css][] = 'modules/filter/filter.css'
 exclude[css][] = 'modules/forum/forum.css'
@@ -38,9 +46,9 @@ exclude[css][] = 'modules/statistics/statistics.css'
 exclude[css][] = 'modules/syslog/syslog.css'
 exclude[css][] = 'modules/system/admin.css'
 exclude[css][] = 'modules/system/maintenance.css'
-exclude[css][] = 'modules/system/system.css'
 exclude[css][] = 'modules/system/system.admin.css'
 exclude[css][] = 'modules/system/system.base.css'
+exclude[css][] = 'modules/system/system.css'
 exclude[css][] = 'modules/system/system.maintenance.css'
 exclude[css][] = 'modules/system/system.menus.css'
 exclude[css][] = 'modules/system/system.messages.css'
@@ -49,6 +57,4 @@ exclude[css][] = 'modules/taxonomy/taxonomy.css'
 exclude[css][] = 'modules/tracker/tracker.css'
 exclude[css][] = 'modules/update/update.css'
 exclude[css][] = 'modules/user/user.css'
-
-settings[paraneue_neue_source] = 'library'
-settings[paraneue_neue_library_path] = 'sites/all/libraries/neue'
+exclude[css][] = 'modules/views/css/views.css'

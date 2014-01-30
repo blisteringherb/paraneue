@@ -5,4 +5,4 @@
 *.sass-cache
 
 # BOWER
-vendor/
+bower_components/

@@ -5,15 +5,7 @@
 
 
 define('PARANEUE_PATH', drupal_get_path('theme', 'paraneue'));
-
-switch(theme_get_setting('paraneue_neue_source')) {
-  case 'library':
-    define('NEUE_PATH', theme_get_setting('paraneue_neue_library_path'));
-    break;
-  case 'bower':
-    define('NEUE_PATH', PARANEUE_PATH . '/vendor/neue');
-    break;
-}
+define('NEUE_PATH', PARANEUE_PATH . '/bower_components/pattern-library');
 
 require_once PARANEUE_PATH . '/includes/bootstrap.inc';
 require_once PARANEUE_PATH . '/includes/theme.inc';
@@ -43,30 +35,27 @@ function paraneue_html_head_alter(&$head_elements) {
 function paraneue_css_alter(&$css) {
   // Load excluded CSS files from theme.
   $excludes = _paraneue_alter(paraneue_theme_get_info('exclude'), 'css');
-    
+  
   // Core
-  $css['neue'] = array(
-    'data' => NEUE_PATH . '/assets/neue.css',
-    'type' => 'file',
-    'every_page' => TRUE,
-    'media' => 'all',
-    'preprocess' => TRUE,
-    'group' => CSS_THEME,
-    'browsers' => array('IE' => TRUE, '!IE' => TRUE),
-    'weight' => -1,
-  );
+  $neue_css = NEUE_PATH . '/neue.css';
+  $css['neue']['data'] = $neue_css;
+  $css['neue']['media'] = 'all'; 
+  $css['neue']['browsers'] = array('IE' => TRUE, '!IE' => TRUE);
+  $css['neue']['preprocess'] = TRUE;
+  $css['neue']['group'] = CSS_THEME;
+  $css['neue']['type'] = 'file';
+  $css['neue']['every_page'] = TRUE;
+  $css['neue']['weight'] = 1;
 
-  // IE
-  $css['neue-ie'] = array(
-    'data' => NEUE_PATH . '/assets/neue.css',
-    'type' => 'file',
-    'every_page' => TRUE,
-    'media' => 'all',
-    'preprocess' => TRUE,
-    'group' => CSS_THEME,
-    'browsers' => array('IE' => 'lt IE 9'),
-    'weight' => 1,
-  );
+  $neue_css_ie = NEUE_PATH . '/ie.css';
+  $css['neue-ie']['data'] = $neue_css_ie;
+  $css['neue-ie']['media'] = 'all';
+  $css['neue-ie']['browsers'] = array('IE' => 'lte IE 8');
+  $css['neue-ie']['preprocess'] = TRUE;
+  $css['neue-ie']['group'] = CSS_THEME;
+  $css['neue-ie']['type'] = 'file';
+  $css['neue-ie']['every_page'] = TRUE;
+  $css['neue-ie']['weight'] = 1;
 
   $css = array_diff_key($css, $excludes);
 }
@@ -78,41 +67,22 @@ function paraneue_js_alter(&$js) {
   // Load excluded JS files from theme.
   $excludes = _paraneue_alter(paraneue_theme_get_info('exclude'), 'js');
 
-  $theme_path = drupal_get_path('theme', 'bootstrap');
+  $jquery = PARANEUE_PATH . '/bower_components/jquery/jquery.js';
+  $js['jquery'] = drupal_js_defaults();
+  $js['jquery']['data'] = $jquery;
+  $js['jquery']['group'] = -100;
+  $js['jquery']['type'] = 'file';
+  $js['jquery']['every_page'] = TRUE;
+  $js['jquery']['weight'] = -30;
 
-  // $jquery = JQUERY_PATH . '/jquery.js';
-  // $js[$jquery] = drupal_js_defaults();
-  // $js[$jquery]['data'] = $jquery;
-  // $js[$jquery]['group'] = -100;
-  // $js[$jquery]['type'] = 'file';
-  // $js[$jquery]['every_page'] = TRUE;
-  // $js[$jquery]['weight'] = -20;
 
-  $js['misc/drupal.js']['weight'] = -19;
-
-  $neue_core = NEUE_PATH . '/assets/neue.js';
-  $js[$neue_core] = drupal_js_defaults();
-  $js[$neue_core]['data'] = $neue_core;
-  $js[$neue_core]['type'] = 'file';
-  $js[$neue_core]['every_page'] = TRUE;
-  $js[$neue_core]['weight'] = -20;
-
-  $neue_html5 = NEUE_PATH . '/assets/ie/html5.min.js';
-  $js[$neue_html5] = drupal_js_defaults();
-  $js[$neue_html5]['data'] = $neue_html5;
-  $js[$neue_html5]['type'] = 'file';
-  $js[$neue_html5]['every_page'] = TRUE;
-  $js[$neue_html5]['weight'] = 1;
-  $js[$neue_html5]['browsers'] = array('IE' => 'lt IE 9');
-
-  $neue_rem = NEUE_PATH . '/assets/ie/rem.min.js';
-  $js[$neue_rem] = drupal_js_defaults();
-  $js[$neue_rem]['data'] = $neue_rem;
-  $js[$neue_rem]['type'] = 'file';
-  $js[$neue_rem]['every_page'] = TRUE;
-  $js[$neue_rem]['weight'] = 2;
-  $js[$neue_rem]['browsers'] = array('IE' => 'lt IE 9');
+  $neue_js = NEUE_PATH . '/neue.js';
+  $js['neue'] = drupal_js_defaults();
+  $js['neue']['data'] = $neue_js;
+  $js['neue']['group'] = -100;
+  $js['neue']['type'] = 'file';
+  $js['neue']['every_page'] = TRUE;
+  $js['neue']['weight'] = -20;
 
   $js = array_diff_key($js, $excludes);
-
 }

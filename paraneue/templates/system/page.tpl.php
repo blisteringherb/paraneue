@@ -25,10 +25,6 @@
 <div role="main" class="wrapper">
   <div class="content-center">
     <?php print $messages; ?>
-    <?php if ($breadcrumb): print $breadcrumb; endif; ?>
-    <?php print render($title_prefix); ?>
-    <?php if ($title): ?><h1 class="section-header"><span><?php print $title; ?></span></h1><?php endif; ?>
-    <?php print render($title_suffix); ?>
     <?php if ($tabs): ?><nav class="tabs"><?php print render($tabs); ?></nav><?php endif; ?>
     <?php print render($page['content']); ?>
   </div>

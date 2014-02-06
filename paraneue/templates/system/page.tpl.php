@@ -7,7 +7,7 @@
       </li>
       <li><a class="utility-link" href="<?php print $front_page; ?>help">Help</a></li>
       <?php if(!$logged_in): ?>
-      <li><a class="utility-link" href="<?php print $front_page; ?>user/login">Sign In</a></li>
+      <li><a class="utility-link js-modal-link" data-cached-modal="#modal-login" href="<?php print $front_page; ?>user/login">Sign In</a></li>
       <?php else: ?>
       <li><a class="utility-link" href="<?php print $front_page; ?>user/logout">Log out</a></li>
       <?php endif; ?>
@@ -33,3 +33,6 @@
 <div class="footer-wrapper">
     <?php //print render($page['footer']); ?>
 </div>
+
+
+

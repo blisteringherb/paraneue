@@ -35,12 +35,10 @@
   </nav>
 </div>
 
-<div role="main" class="wrapper">
-  <div class="page">
-    <?php print $messages; ?>
-    <?php if ($tabs): ?><nav class="tabs"><?php print render($tabs); ?></nav><?php endif; ?>
-    <?php print render($page['content']); ?> 
-  </div>
+<div role="main" class="wrapper">  
+  <?php print $messages; ?>
+  <?php if ($tabs): ?><nav class="tabs"><?php print render($tabs); ?></nav><?php endif; ?>
+  <?php print render($page['content']); ?> 
 </div>
 
 <div class="footer--wrapper">
@@ -95,4 +93,3 @@
     </div>
   </footer>
 </div>
-

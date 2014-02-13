@@ -12,11 +12,16 @@ function paraneue_dosomething_page_alter(&$page) {
       $page[$bottom_region] = array('region' => $bottom_region);
     }
 
-    $page[$bottom_region]['authentication'] = array(
-      '#prefix' => '<div style="display: none">',
+    $page[$bottom_region]['login'] = array(
+      '#prefix' => '<div id="modal-login" class="cached-modal">',
       '#suffix' => '</div>',
-      'login' => drupal_get_form('user_login_block'),
-      'register' => drupal_get_form('user_register_form'),
+      'login' => drupal_get_form('user_login_block')
+    );
+    
+    $page[$bottom_region]['register'] = array(
+      '#prefix' => '<div id="modal-register" class="cached-modal">',
+      '#suffix' => '</div>',
+      'register' => drupal_get_form('user_register_form')
     );
   }
 }

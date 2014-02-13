@@ -86,3 +86,56 @@ function paraneue_js_alter(&$js) {
 
   $js = array_diff_key($js, $excludes);
 }
+
+function paraneue_form_alter(&$form, &$form_state, $form_id) {
+  if( $form_id == "user_login_block" ) {
+    $form['modal-close-button'] = array(
+      '#type' => 'item',
+      '#markup' => '<a href="#" class="js-close-modal modal-close-button">×</a>',
+      '#weight' => -20
+    );
+
+    $form['message'] = array(
+      '#type' => 'item',
+      '#markup' => '<h2 class="auth-header">Log in to get started!</h2>',
+      '#weight' => -15
+    );
+ 
+    unset($form['links']);
+
+    $form['actions']['submit']['#attributes']['class'] = array('btn', 'medium');
+
+    $form['create-account-link'] = array(
+      '#type' => 'item',
+      '#markup' => '<a href="/user/registration" data-cached-modal="#modal-register" class="js-modal-link">Create a DoSomething.org Account</a>',
+      '#weight' => 500
+    );
+  }
+
+  if ( $form_id == "user_register_form" ) {
+    $form['modal-close-button'] = array(
+      '#type' => 'item',
+      '#markup' => '<a href="#" class="js-close-modal modal-close-button">×</a>',
+      '#weight' => -20
+    );
+
+    $form['message'] = array(
+      '#type' => 'item',
+      '#markup' => '<h2 class="auth-header">Create a DoSomething.org account to get started!</h2>',
+      '#weight' => -15
+    );
+
+    $form['field_first_name']['#attributes']['class'] = array('js-validate');
+    $form['field_first_name']['#attributes']['data-validate'] = 'name';
+
+    $form['field_birthdate']['#attributes']['class'] = array('js-validate');
+    $form['field_birthdate']['#attributes']['data-validate'] = 'birthday';
+
+    $form['create-account-link'] = array(
+      '#type' => 'item',
+      '#markup' => '<a href="/user/login" data-cached-modal="#modal-login" class="js-modal-link">Login to an existing account</a>',
+      '#weight' => 500
+    );
+  }
+
+}

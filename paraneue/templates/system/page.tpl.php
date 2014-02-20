@@ -38,10 +38,10 @@
   <?php print $messages; ?>
 </div>
 
-<div role="main" class="wrapper">
+<main class="wrapper">
   <?php if ($tabs): ?><nav class="tabs"><?php print render($tabs); ?></nav><?php endif; ?>
   <?php print render($page['content']); ?> 
-</div>
+</main>
 
 <div class="footer--wrapper">
   <form class="searchfield" action="/search/" method="get" accept-charset="utf-8">

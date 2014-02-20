@@ -21,11 +21,7 @@ function paraneue_html_head_alter(&$head_elements) {
   }
 
   if ($shortcut_key) {
-    $shortcut = $head_elements[$shortcut_key];
     unset($head_elements[$shortcut_key]);
-    $shortcut_url = url(NEUE_PATH . '/assets/favicon.ico', array('absolute' => TRUE));
-    $shortcut['#attributes']['href'] = $shortcut_url;
-    $head_elements['drupal_add_html_head_link:' . $shortcut_url] = $shortcut;
   }
 }
 
@@ -92,13 +88,13 @@ function paraneue_form_alter(&$form, &$form_state, $form_id) {
     $form['modal-close-button'] = array(
       '#type' => 'item',
       '#markup' => '<a href="#" class="js-close-modal modal-close-button">×</a>',
-      '#weight' => -20
+      '#weight' => -200
     );
 
     $form['message'] = array(
       '#type' => 'item',
       '#markup' => '<h2 class="auth-header">Log in to get started!</h2>',
-      '#weight' => -15
+      '#weight' => -199
     );
  
     unset($form['links']);
@@ -113,23 +109,24 @@ function paraneue_form_alter(&$form, &$form_state, $form_id) {
   }
 
   if ( $form_id == "user_register_form" ) {
+    /* dpm($form); */
     $form['modal-close-button'] = array(
       '#type' => 'item',
       '#markup' => '<a href="#" class="js-close-modal modal-close-button">×</a>',
-      '#weight' => -20
+      '#weight' => -200
     );
 
     $form['message'] = array(
       '#type' => 'item',
       '#markup' => '<h2 class="auth-header">Create a DoSomething.org account to get started!</h2>',
-      '#weight' => -15
+      '#weight' => -199
     );
 
     $form['field_first_name']['#attributes']['class'] = array('js-validate');
     $form['field_first_name']['#attributes']['data-validate'] = 'name';
 
-    $form['field_birthdate']['#attributes']['class'] = array('js-validate');
-    $form['field_birthdate']['#attributes']['data-validate'] = 'birthday';
+    $form['field-birthdate']['#attributes']['class'] = array('js-validate');
+    $form['field-birthdate']['#attributes']['data-validate'] = 'birthday';
 
     $form['create-account-link'] = array(
       '#type' => 'item',

@@ -31,11 +31,11 @@ function paraneue_html_head_alter(&$head_elements) {
 function paraneue_css_alter(&$css) {
   // Load excluded CSS files from theme.
   $excludes = _paraneue_alter(paraneue_theme_get_info('exclude'), 'css');
-  
+
   // Core
   $neue_css = NEUE_PATH . '/neue.css';
   $css['neue']['data'] = $neue_css;
-  $css['neue']['media'] = 'all'; 
+  $css['neue']['media'] = 'all';
   $css['neue']['browsers'] = array('IE' => TRUE, '!IE' => TRUE);
   $css['neue']['preprocess'] = TRUE;
   $css['neue']['group'] = CSS_THEME;
@@ -63,7 +63,7 @@ function paraneue_js_alter(&$js) {
   // Load excluded JS files from theme.
   $excludes = _paraneue_alter(paraneue_theme_get_info('exclude'), 'js');
 
-  $jquery = PARANEUE_PATH . '/bower_components/jquery/jquery.js';
+  $jquery = PARANEUE_PATH . '/bower_components/jquery/dist/jquery.js';
   $js['jquery'] = drupal_js_defaults();
   $js['jquery']['data'] = $jquery;
   $js['jquery']['group'] = -100;
@@ -96,7 +96,7 @@ function paraneue_form_alter(&$form, &$form_state, $form_id) {
       '#markup' => '<h2 class="auth-header">Log in to get started!</h2>',
       '#weight' => -199
     );
- 
+
     unset($form['links']);
 
     $form['actions']['submit']['#attributes']['class'] = array('btn', 'medium');

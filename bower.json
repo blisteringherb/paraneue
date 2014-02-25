@@ -3,7 +3,7 @@
   "private": "true",
   "dependencies": {
     "pattern-library": "git@github.com:DoSomething/ds-neue.git",
-    "jquery": "latest",
+    "jquery": "v1.11.0-beta3",
     "unveil": "latest"
   }
 }

@@ -81,7 +81,6 @@
       <ul>
         <li><a href="#">What is Do Something?</a></li>
         <li><a href="#">Our Team</a></li>
-        <li><a href="#">Scholarships</a></li>
         <li><a href="#">Jobs</a></li>
         <li><a href="#">Internships</a></li>
         <li><a href="#">Old People</a></li>

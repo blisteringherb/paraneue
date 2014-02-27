@@ -13,14 +13,14 @@ function paraneue_dosomething_page_alter(&$page) {
     }
 
     $page[$bottom_region]['login'] = array(
-      '#prefix' => '<div id="modal-login" class="cached-modal">',
-      '#suffix' => '</div>',
+      '#prefix' => '<script type="text/cached-modal" id="modal--login">',
+      '#suffix' => '</script>',
       'login' => drupal_get_form('user_login_block')
     );
     
     $page[$bottom_region]['register'] = array(
-      '#prefix' => '<div id="modal-register" class="cached-modal">',
-      '#suffix' => '</div>',
+      '#prefix' => '<script type="text/cached-modal" id="modal--register">',
+      '#suffix' => '</script>',
       'register' => drupal_get_form('user_register_form')
     );
   }

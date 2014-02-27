@@ -103,7 +103,7 @@ function paraneue_form_alter(&$form, &$form_state, $form_id) {
 
     $form['create-account-link'] = array(
       '#type' => 'item',
-      '#markup' => '<a href="/user/registration" data-cached-modal="#modal-register" class="js-modal-link">Create a DoSomething.org Account</a>',
+      '#markup' => '<a href="/user/registration" data-cached-modal="#modal--register" class="js-modal-link">Create a DoSomething.org Account</a>',
       '#weight' => 500
     );
   }
@@ -130,7 +130,7 @@ function paraneue_form_alter(&$form, &$form_state, $form_id) {
 
     $form['create-account-link'] = array(
       '#type' => 'item',
-      '#markup' => '<a href="/user/login" data-cached-modal="#modal-login" class="js-modal-link">Login to an existing account</a>',
+      '#markup' => '<a href="/user/login" data-cached-modal="#modal--login" class="js-modal-link">Login to an existing account</a>',
       '#weight' => 500
     );
   }

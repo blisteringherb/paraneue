@@ -2,8 +2,8 @@
   "name": "paraneue",
   "private": "true",
   "dependencies": {
-    "pattern-library": "git@github.com:DoSomething/ds-neue.git",
-    "jquery": "v1.11.0-beta3",
+    "neue": "git@github.com:DoSomething/ds-neue.git#~3.0.0",
+    "jquery": "~1.11.0",
     "unveil": "latest"
   }
 }

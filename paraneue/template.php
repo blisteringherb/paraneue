@@ -5,7 +5,7 @@
 
 
 define('PARANEUE_PATH', drupal_get_path('theme', 'paraneue'));
-define('NEUE_PATH', PARANEUE_PATH . '/bower_components/pattern-library');
+define('NEUE_PATH', PARANEUE_PATH . '/bower_components/neue');
 
 require_once PARANEUE_PATH . '/includes/bootstrap.inc';
 require_once PARANEUE_PATH . '/includes/theme.inc';

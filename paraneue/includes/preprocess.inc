@@ -15,12 +15,14 @@ function paraneue_dosomething_page_alter(&$page) {
     $page[$bottom_region]['login'] = array(
       '#prefix' => '<script type="text/cached-modal" id="modal--login">',
       '#suffix' => '</script>',
+      'modal_close' => '<a href="#" class="js-close-modal modal-close-button">×</a>',
       'login' => drupal_get_form('user_login_block')
     );
     
     $page[$bottom_region]['register'] = array(
       '#prefix' => '<script type="text/cached-modal" id="modal--register">',
       '#suffix' => '</script>',
+      'modal_close' => '<a href="#" class="js-close-modal modal-close-button">×</a>',
       'register' => drupal_get_form('user_register_form')
     );
   }

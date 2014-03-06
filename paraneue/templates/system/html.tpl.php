@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <link rel="shortcut icon" href="/<?php print NEUE_PATH; ?>/assets/images/favicon.ico">
   <link rel="apple-touch-icon-precomposed" href="/<?php print NEUE_PATH; ?>/assets/images/apple-touch-icon-precomposed.png">

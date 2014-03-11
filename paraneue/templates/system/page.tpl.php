@@ -22,9 +22,7 @@
       <div class="secondary-nav">
         <ul>
           <li class="searchfield">
-            <form action="/search/" method="get" accept-charset="utf-8">
-              <input type="search" name="s" id="search" value="" />
-            </form>
+            <?php print $search_box; ?>
           </li>
           <?php if(!$logged_in): ?>
           <li><a href="<?php print $front_page; ?>user/login" class="secondary-nav-item js-modal-link" data-cached-modal="#modal--login">Log In</a></li>
